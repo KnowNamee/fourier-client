@@ -44,7 +44,7 @@ public class OnSignUpButtonClickListener implements View.OnClickListener {
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View v) {
-        // Hide input method manager
+        // Hide keyboard
         InputMethodManager inputManager = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         inputManager.hideSoftInputFromWindow(v.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         if (!isStateVisible) {
@@ -94,7 +94,5 @@ public class OnSignUpButtonClickListener implements View.OnClickListener {
 
         return isEmailValid && isPasswordValid && isUsernameValid;
     }
-
-
 
 }

@@ -59,7 +59,8 @@ public class AuthorizationActivity extends Activity {
         text = (TextView) findViewById(R.id.welcomeText);
 
         // Listeners
-        btnSignIn.setOnClickListener((View.OnClickListener) new OnSignInButtonClickListener());
+        btnSignIn.setOnClickListener((View.OnClickListener) new OnSignInButtonClickListener(
+                this, username, password, btnSignUp, text));
         btnSignUp.setOnClickListener((View.OnClickListener) new OnSignUpButtonClickListener(
                 this, email, username, password, btnSignIn, text));
     }
