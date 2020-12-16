@@ -6,17 +6,15 @@ import com.fourier.application.network.https.HttpsRequestBuilder;
 import java.io.IOException;
 import java.util.List;
 
-public class RegistrationRequest implements Runnable {
+public class LoginRequest implements Runnable {
 
     private String url;
-    private String email;
     private String username;
     private String password;
     private HttpsRawRequest request;
 
-    public RegistrationRequest(String url, String email, String username, String password) {
+    public LoginRequest(String url, String username, String password) {
         this.url = url;
-        this.email = email;
         this.username = username;
         this.password = password;
     }
@@ -24,21 +22,20 @@ public class RegistrationRequest implements Runnable {
     @Override
     public void run() {
         try {
-            send(url, email, username, password);
+            send(url, username, password);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void send(String url, String email, String username, String password)
+    private void send(String url, String username, String password)
             throws IOException {
         request = new HttpsRequestBuilder()
                 .openConnection(url)
-                .setRequestMethod("POST")
+                .setRequestMethod("GET")
                 .setDoInput(true)
                 .setDoOutput(true)
                 .raw()
-                .addItem("email", email)
                 .addItem("username", username)
                 .addItem("password", password)
                 .send();
@@ -49,6 +46,13 @@ public class RegistrationRequest implements Runnable {
             return null;
         }
         return request.getResponse();
+    }
+
+    public String getAuthorizationToken() {
+        if (request == null) {
+            return null;
+        }
+        return request.getHeader("Authorization");
     }
 
 }
