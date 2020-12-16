@@ -1,5 +1,6 @@
-package com.fourier.application;
+package com.fourier.application.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,11 +10,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.fourier.application.generel.OnGetFileButtonClickListener;
-import com.fourier.application.generel.OnLoadWAVButtonClickListener;
-import com.fourier.application.generel.OnRecButtonClickListener;
+import com.fourier.application.R;
+import com.fourier.application.listener.general.OnGetFileButtonClickListener;
+import com.fourier.application.listener.general.OnLoadWAVButtonClickListener;
+import com.fourier.application.listener.general.OnRecButtonClickListener;
 
-public class GeneralActivity extends AppCompatActivity {
+public class GeneralActivity extends Activity {
 
     private Button btnGetFile;
     private Button btnLoadWAV;
@@ -22,7 +24,6 @@ public class GeneralActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.general_activity);
 
         initControls();
@@ -48,10 +49,14 @@ public class GeneralActivity extends AppCompatActivity {
     }
 
     private void AddListners() {
-        btnGetFile.setOnClickListener((View.OnClickListener) new OnGetFileButtonClickListener(this));
-        btnRecStop.setOnClickListener((View.OnClickListener) new OnLoadWAVButtonClickListener(this));
-        btnRecStop.setOnClickListener((View.OnClickListener) new OnRecButtonClickListener(this));
+        btnGetFile.setOnClickListener((View.OnClickListener) new OnGetFileButtonClickListener(
+                this));
+        btnRecStop.setOnClickListener((View.OnClickListener) new OnLoadWAVButtonClickListener(
+                this));
+        btnRecStop.setOnClickListener((View.OnClickListener) new OnRecButtonClickListener(
+                this));
     }
+
 }
 
 

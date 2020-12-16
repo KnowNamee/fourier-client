@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.AuthorizationActivity"></activity>
+        <activity android:name=".activity.GeneralActivity"></activity>
     </application>
 
 </manifest>
