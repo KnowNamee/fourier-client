@@ -6,7 +6,9 @@
     <string name="username">username</string>
     <string name="email">email</string>
     <string name="password">password</string>
-    <string name="load_wav">Load wav</string>
+    <string name="load_wav">Upload</string>
     <string name="rec_stop">Rec/Stop</string>
-    <string name="get_file">Get File</string>
+    <string name="get_file">Process</string>
+    <string name="token">token</string>
+    <string name="credentials_sp">credentialsSP</string>
 </resources>

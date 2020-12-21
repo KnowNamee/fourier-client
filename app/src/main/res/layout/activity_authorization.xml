@@ -34,13 +34,14 @@
 
     <TextView
         android:id="@+id/welcomeText"
-        android:layout_width="119dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="158dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="92dp"
         android:text="@string/welcome_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Fourier" />

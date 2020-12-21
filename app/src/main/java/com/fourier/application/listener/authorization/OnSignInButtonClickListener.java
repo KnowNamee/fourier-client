@@ -1,8 +1,11 @@
 package com.fourier.application.listener.authorization;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -13,6 +16,7 @@ import androidx.annotation.RequiresApi;
 
 import com.fourier.application.R;
 import com.fourier.application.activity.AuthorizationActivity;
+import com.fourier.application.activity.GeneralActivity;
 import com.fourier.application.network.request.LoginRequest;
 import com.fourier.application.utils.CredentialsValidator;
 
@@ -52,7 +56,7 @@ public class OnSignInButtonClickListener implements View.OnClickListener {
             isStateVisible = true;
         } else if (validateCredentials()) {
             LoginRequest signIn = new LoginRequest(
-                    "https://fourier-server.herokuapp.com/login",
+                    "https://fourier-server-dev.herokuapp.com/login",
                     username.getText().toString(),
                     password.getText().toString());
             Thread signInThread = new Thread(signIn);
@@ -64,7 +68,13 @@ public class OnSignInButtonClickListener implements View.OnClickListener {
             }
             String token = signIn.getAuthorizationToken();
             if (token != null) {
-
+                SharedPreferences sPref = activity.getSharedPreferences(
+                        v.getContext().getResources().getString(R.string.credentials_sp), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sPref.edit();
+                editor.putString(v.getContext().getResources().getString(R.string.token), token);
+                editor.apply();
+                Intent intent = new Intent(activity, GeneralActivity.class);
+                activity.startActivity(intent);
             }
         }
     }

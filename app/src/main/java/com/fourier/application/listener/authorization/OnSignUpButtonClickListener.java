@@ -57,7 +57,7 @@ public class OnSignUpButtonClickListener implements View.OnClickListener {
         } else if (validateCredentials()) {
             // TODO handle server errors and report user
             RegistrationRequest signUp = new RegistrationRequest(
-                    "https://fourier-server.herokuapp.com/registration/user",
+                    "https://fourier-server-dev.herokuapp.com/registration/user",
                     email.getText().toString(),
                     username.getText().toString(),
                     password.getText().toString());

@@ -32,7 +32,7 @@ public class LoginRequest implements Runnable {
             throws IOException {
         request = new HttpsRequestBuilder()
                 .openConnection(url)
-                .setRequestMethod("GET")
+                .setRequestMethod("POST")
                 .setDoInput(true)
                 .setDoOutput(true)
                 .raw()

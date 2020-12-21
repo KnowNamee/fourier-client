@@ -1,5 +1,7 @@
 package com.fourier.application.network.https;
 
+import android.content.ContentResolver;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
